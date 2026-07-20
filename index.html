@@ -186,7 +186,10 @@
   let shouldSnap = false;
 
   // ---------- Tweakable constants ----------
-  const RADIUS = 480;
+  let RADIUS = 480;
+  function updateCarouselRadius(){ RADIUS = window.innerWidth < 640 ? 260 : 480; }
+  updateCarouselRadius();
+  window.addEventListener('resize', updateCarouselRadius);
   const ANGLE_PER_CARD = 22;  // degrees — higher = deeper concave effect
   const FRICTION = 0.9;
   const MIN_VELOCITY = 0.003;
