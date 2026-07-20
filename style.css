@@ -50,11 +50,11 @@
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  section{ position:relative; z-index:2; min-height:100vh; }
+  section{ position:relative; z-index:2; min-height:100vh; min-height:-webkit-fill-available; min-height:100dvh; }
 
   /* ---------- Top liquid-glass nav ---------- */
   .topnav{
-    position:fixed; top:28px; left:50%; transform:translateX(-50%);
+    position:fixed; top:max(28px, env(safe-area-inset-top,0px)); left:50%; transform:translateX(-50%);
     z-index:50; display:flex; align-items:center; gap:18px;
   }
   .nav-pill{
@@ -131,7 +131,7 @@
   }
 
   /* ---------- HERO ---------- */
-  #home{ display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:120px 24px 60px; }
+  #home{ display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:max(120px, calc(env(safe-area-inset-top,0px) + 60px)) 24px max(60px, env(safe-area-inset-bottom,0px)); }
   .eyebrow{ color:var(--muted); font-size:14px; letter-spacing:3px; text-transform:uppercase; margin-bottom:18px;}
   .hero-title{ font-size:clamp(48px,8vw,108px); line-height:0.98; font-weight:300; }
   .hero-title .grad{
@@ -212,6 +212,7 @@
   .carousel-wrap{
     position:relative; width:100%; height:560px; perspective:1900px; margin-top:40px;
     display:flex; align-items:center; justify-content:center;
+    touch-action:pan-y;
   }
   .carousel-stage{ position:relative; width:100%; height:100%; transform-style:preserve-3d; }
   .card{
@@ -314,7 +315,7 @@
   .testi-role{ font-size:12.5px; color:var(--muted); }
 
   /* ---------- CONTACT ---------- */
-  #contact{ display:flex; flex-direction:column; align-items:center; padding-bottom:140px; }
+  #contact{ display:flex; flex-direction:column; align-items:center; padding-bottom:max(140px, calc(env(safe-area-inset-bottom,0px) + 20px)); }
   .contact-card{
     max-width:640px; width:100%; margin:50px 24px 0; padding:46px; border-radius:20px;
     background:var(--glass); border:1px solid var(--glass-border); backdrop-filter:blur(24px);

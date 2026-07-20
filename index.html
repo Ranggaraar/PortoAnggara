@@ -185,6 +185,11 @@
   });
   let shouldSnap = false;
 
+  // ---------- Dynamic viewport height for mobile ----------
+  function setVH(){ document.documentElement.style.setProperty('--vh', `${window.innerHeight*0.01}px`); }
+  setVH();
+  window.addEventListener('resize', setVH);
+
   // ---------- Tweakable constants ----------
   const RADIUS = 480;
   const ANGLE_PER_CARD = 22;  // degrees — higher = deeper concave effect
