@@ -14,7 +14,7 @@
     --shadow:rgba(0,0,0,0.55);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
   body{
     background:var(--bg);
     color:var(--text);
@@ -75,7 +75,7 @@
     border:1px solid rgba(255,255,255,0.14);
     box-shadow:inset 0 1px 0 rgba(255,255,255,0.15), 0 4px 18px rgba(24,224,163,0.08);
     pointer-events:none; z-index:1;
-    transition:transform .5s cubic-bezier(.34,1.2,.64,1), width .5s cubic-bezier(.34,1.2,.64,1);
+    transition:transform .5s cubic-bezier(.4,0,.2,1), width .5s cubic-bezier(.4,0,.2,1);
   }
   .nav-glare{
     position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:1;
@@ -178,7 +178,7 @@
     border:1px solid rgba(255,255,255,0.14);
     box-shadow:inset 0 1px 0 rgba(255,255,255,0.15), 0 4px 18px rgba(24,224,163,0.08);
     pointer-events:none; z-index:1;
-    transition:transform .5s cubic-bezier(.34,1.2,.64,1), width .5s cubic-bezier(.34,1.2,.64,1);
+    transition:transform .5s cubic-bezier(.4,0,.2,1), width .5s cubic-bezier(.4,0,.2,1);
   }
   .cat-glare{
     position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:1;
@@ -212,7 +212,7 @@
   .carousel-wrap{
     position:relative; width:100%; height:560px; perspective:1900px; margin-top:40px;
     display:flex; align-items:center; justify-content:center;
-    touch-action:pan-y;
+    touch-action:pan-y; overflow:hidden;
   }
   .carousel-stage{ position:relative; width:100%; height:100%; transform-style:preserve-3d; }
   .card{
@@ -382,9 +382,69 @@
   }
 
   @media (max-width:640px){
-    .topnav{ top:16px; }
-    .nav-pill a{ padding:10px 16px; font-size:13px; }
+    .topnav{ top:10px; }
+    .nav-pill{ gap:2px; padding:4px; }
+    .nav-pill a{ padding:6px 10px; font-size:11px; }
     .nav-cta{ display:none; }
-    .card{ width:150px; height:340px; margin:-170px 0 0 -75px; }
-    .carousel-wrap{ height:400px; }
+
+    .cat-pill{ gap:2px; padding:4px; flex-wrap:wrap; justify-content:center; }
+    .cat-pill a{ padding:5px 8px; font-size:10px; }
+
+    .blob.b1{ width:300px; height:360px; top:-80px; right:-60px; }
+    .blob.b2{ width:240px; height:300px; bottom:-100px; left:4%; }
+    .blob.b3{ width:200px; height:240px; top:50%; right:5%; }
+
+    #home{ padding:max(80px, calc(env(safe-area-inset-top,0px) + 40px)) 16px max(40px, env(safe-area-inset-bottom,0px)); }
+    .hero-sub{ font-size:14px; margin:18px auto 24px; }
+    .scroll-pill{ padding:12px 24px; font-size:13px; }
+
+    .sec-head{ padding-top:70px; }
+
+    .project-summary{ margin:16px auto 0; padding:0 14px; }
+    .summary-desc{ font-size:13px; }
+
+    .card{ width:120px; height:280px; margin:-140px 0 0 -60px; }
+    .carousel-wrap{ height:340px; }
+
+    .details-btn{ margin-top:18px; padding:10px 20px; font-size:12px; }
+
+    .detail-overlay{ padding:12px; align-items:flex-start; overflow-y:auto; }
+    .detail-inner{ gap:16px; }
+    .detail-image{ flex:1 1 100%; max-width:100%; aspect-ratio:4/3; }
+    .detail-info{ padding:18px; flex:1 1 100%; }
+    .detail-info .v{ font-size:16px; }
+    .detail-bottom{ gap:10px; }
+    .pill-btn{ padding:12px 20px; font-size:13px; }
+
+    #skills{ padding-bottom:50px; }
+    .skills-grid{ gap:8px; padding:0 14px; }
+    .skill-card{ padding:8px 14px; font-size:12px; }
+
+    #testimonials{ padding-bottom:50px; }
+    .marquee-wrap{ margin:30px 0; gap:14px; }
+    .marquee-track{ gap:12px; }
+    .testi-card{ width:220px; padding:20px; }
+    .testi-text{ font-size:13px; }
+
+    #contact{ padding-bottom:max(60px, calc(env(safe-area-inset-bottom,0px) + 12px)); }
+    .contact-card{ padding:20px; margin:24px 14px 0; }
+    .field label{ font-size:12px; }
+    .field input, .field textarea{ padding:10px 12px; font-size:13px; }
+    .submit-btn{ padding:14px; font-size:14px; }
+    .socials{ gap:10px; margin-top:24px; }
+    .socials a{ width:38px; height:38px; font-size:12px; }
+
+    #projects{ padding-bottom:40px; }
+
+    footer{ font-size:10px; padding-bottom:16px; }
+
+    .toast{ padding:8px 18px; font-size:12px; bottom:14px; white-space:normal; max-width:90vw; }
+  }
+
+  @media (max-width:480px){
+    .hero-title{ font-size:clamp(32px,9vw,48px); }
+    .hero-script{ font-size:clamp(52px,14vw,70px); -webkit-text-stroke:1px rgba(255,255,255,0.85); }
+    .card{ width:100px; height:230px; margin:-115px 0 0 -50px; }
+    .carousel-wrap{ height:280px; }
+    .cat-pill a{ font-size:9px; padding:4px 6px; }
   }

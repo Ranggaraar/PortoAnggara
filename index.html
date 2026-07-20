@@ -191,7 +191,15 @@
   window.addEventListener('resize', setVH);
 
   // ---------- Tweakable constants ----------
-  const RADIUS = 480;
+  let RADIUS = 480;
+  function updateCarouselRadius(){
+    const w = window.innerWidth;
+    if (w < 480) RADIUS = 180;
+    else if (w < 640) RADIUS = 260;
+    else RADIUS = 480;
+  }
+  updateCarouselRadius();
+  window.addEventListener('resize', updateCarouselRadius);
   const ANGLE_PER_CARD = 22;  // degrees — higher = deeper concave effect
   const FRICTION = 0.9;
   const MIN_VELOCITY = 0.003;
@@ -497,7 +505,7 @@
     const active = document.querySelector('.nav-pill a.active');
     if (!active || !navIndicator) return;
     navIndicator.style.transition = smooth
-      ? 'transform .5s cubic-bezier(.34,1.2,.64,1), width .5s cubic-bezier(.34,1.2,.64,1)'
+      ? 'transform .5s cubic-bezier(.4,0,.2,1), width .5s cubic-bezier(.4,0,.2,1)'
       : 'none';
     navIndicator.style.width = active.offsetWidth + 'px';
     navIndicator.style.transform = `translateX(${active.offsetLeft}px)`;
@@ -522,7 +530,7 @@
     const active = document.querySelector('.cat-pill a.active');
     if (!active || !catIndicator) return;
     catIndicator.style.transition = smooth
-      ? 'transform .5s cubic-bezier(.34,1.2,.64,1), width .5s cubic-bezier(.34,1.2,.64,1)'
+      ? 'transform .5s cubic-bezier(.4,0,.2,1), width .5s cubic-bezier(.4,0,.2,1)'
       : 'none';
     catIndicator.style.width = active.offsetWidth + 'px';
     catIndicator.style.transform = `translateX(${active.offsetLeft}px)`;
@@ -551,11 +559,15 @@
   const sections = ['home','projects','skills','testimonials','contact'];
   const navLinks = document.querySelectorAll('.nav-pill a');
   const tItems = document.querySelectorAll('.t-item');
+  let activeTimer = 0;
 
   function setActive(id){
-    navLinks.forEach(a=> a.classList.toggle('active', a.dataset.sec===id));
-    tItems.forEach(t=> t.classList.toggle('active', t.dataset.sec===id));
-    updateIndicator(true);
+    if (activeTimer) cancelAnimationFrame(activeTimer);
+    activeTimer = requestAnimationFrame(() => {
+      navLinks.forEach(a=> a.classList.toggle('active', a.dataset.sec===id));
+      tItems.forEach(t=> t.classList.toggle('active', t.dataset.sec===id));
+      updateIndicator(true);
+    });
   }
 
   const observer = new IntersectionObserver((entries)=>{
@@ -564,7 +576,7 @@
         setActive(entry.target.id);
       }
     });
-  }, {threshold:[0.4,0.6]});
+  }, {threshold:0.5});
   sections.forEach(id=> observer.observe(document.getElementById(id)));
 
   tItems.forEach(t=> t.addEventListener('click', ()=>{
