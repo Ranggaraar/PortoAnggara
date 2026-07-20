@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;1,400;1,500&family=Beau+Rivage&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ambient">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+</div>
+<div class="grain"></div>
+
+<!-- NAV -->
+<div class="topnav">
+  <nav class="nav-pill" id="navPill">
+    <div class="nav-indicator" id="navIndicator"></div>
+    <div class="nav-glare" id="navGlare"></div>
+    <a href="#home" data-sec="home" class="active">Home</a>
+    <a href="#projects" data-sec="projects">Project</a>
+    <a href="#skills" data-sec="skills">My Skills</a>
+  </nav>
+  <div class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+    <span class="g">Let's Work</span> <span class="b">Together</span>
+  </div>
+</div>
+
+<!-- VERTICAL TIMELINE -->
+<div class="timeline" id="timeline">
+  <div class="t-item active" data-sec="home"><div class="t-line"></div><div class="t-dot"></div><div class="t-label"><span class="g">About</span> <span class="b">Me</span></div></div>
+  <div class="t-item" data-sec="projects"><div class="t-line"></div><div class="t-dot"></div><div class="t-label">My Projects</div></div>
+  <div class="t-item" data-sec="skills"><div class="t-line"></div><div class="t-dot"></div><div class="t-label">My Skills</div></div>
+  <div class="t-item" data-sec="testimonials"><div class="t-line"></div><div class="t-dot"></div><div class="t-label">What They Say</div></div>
+  <div class="t-item" data-sec="contact"><div class="t-dot"></div><div class="t-label">Contact Me</div></div>
+</div>
+
+<!-- HOME -->
+<section id="home">
+  <div class="eyebrow">Digital Designer &amp; Visual Artist</div>
+  <h1 class="hero-title"><span class="grad">Welcome</span> to My</h1>
+  <span class="hero-script">Gallery</span>
+  <p class="hero-sub">Aku merancang pengalaman visual yang tenang, detail, dan sedikit sinematik — perpaduan antara desain, gerak, dan cerita di setiap proyek yang aku kerjakan.</p>
+  <div class="scroll-pill" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Slide Down for More</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-head">
+    <div class="sec-eyebrow">Selected Work</div>
+    <h2 class="sec-title"><span class="grad">My</span> Projects</h2>
+  </div>
+
+  <nav class="cat-pill" id="catPill">
+    <div class="cat-indicator" id="catIndicator"></div>
+    <div class="cat-glare" id="catGlare"></div>
+    <a href="#" data-cat="live" class="active">Live Streaming</a>
+    <a href="#" data-cat="brand">Brand Identity</a>
+    <a href="#" data-cat="social">Social Media</a>
+    <a href="#" data-cat="other">Other Works</a>
+  </nav>
+
+  <div class="carousel-wrap">
+    <div class="carousel-stage" id="stage"></div>
+  </div>
+
+  <div class="project-summary">
+    <div class="summary-brand" id="summaryBrand">AURORA</div>
+    <p class="summary-desc" id="summaryDesc">Redesain lengkap aplikasi keuangan pribadi dengan fokus pada kejelasan data dan interaksi yang menenangkan.</p>
+  </div>
+
+  <div class="details-btn" id="detailsBtn">Click for Details</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-head">
+    <div class="sec-eyebrow">Capabilities</div>
+    <h2 class="sec-title"><span class="grad">My</span> Skills</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">Simple Motion</div>
+    <div class="skill-card">After Effect</div>
+    <div class="skill-card">Photoshop</div>
+    <div class="skill-card">Live Streaming Design</div>
+    <div class="skill-card">Frame Live Stream Design</div>
+    <div class="skill-card">Social Media Feeds</div>
+    <div class="skill-card">Logo</div>
+    <div class="skill-card">Brand Identity</div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="sec-head">
+    <div class="sec-eyebrow">Kind Words</div>
+    <h2 class="sec-title">What They <span class="grad">Say</span></h2>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee marquee--rtl">
+      <div class="marquee-track" id="track1"></div>
+    </div>
+    <div class="marquee marquee--ltr">
+      <div class="marquee-track" id="track2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-head">
+    <div class="sec-eyebrow">Get In Touch</div>
+    <h2 class="sec-title"><span class="grad">Let's Work</span> Together</h2>
+  </div>
+  <div class="contact-card">
+    <div class="field"><label>Nama</label><input type="text" id="formName" placeholder="Nama lengkap kamu"></div>
+    <div class="field"><label>Email</label><input type="email" id="formEmail" placeholder="nama@email.com"></div>
+    <div class="field"><label>Pesan</label><textarea id="formMsg" rows="4" placeholder="Ceritakan sedikit tentang proyekmu..."></textarea></div>
+    <div class="submit-btn" id="submitBtn"><span class="g">Send</span> <span class="b">Message</span></div>
+    <div class="socials">
+      <a href="#">IG</a><a href="#">BE</a><a href="#">LI</a><a href="#">DR</a>
+    </div>
+  </div>
+  <footer style="margin-top:60px;">© 2026 — Crafted with care.</footer>
+</section>
+
+<!-- DETAIL OVERLAY -->
+<div class="detail-overlay" id="overlay">
+  <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+    <div class="detail-inner">
+      <div class="detail-image" id="ovImage">IMAGE</div>
+      <div class="detail-info">
+        <div class="k">Brand</div><div class="v" id="ovBrand">—</div>
+        <div class="k">Year</div><div class="v" id="ovYear">—</div>
+        <div class="k">Software</div><div class="v" id="ovSoftware" style="font-size:18px;">—</div>
+        <div class="k">Description</div><p class="desc" id="ovDesc">—</p>
+      </div>
+    </div>
+    <div class="detail-bottom">
+      <span class="q">Have a Question?</span>
+      <div class="pill-btn" onclick="document.getElementById('overlay').classList.remove('open'); document.getElementById('contact').scrollIntoView({behavior:'smooth'});"><span style="color:var(--green)">Let's Work</span> <span style="color:var(--lightblue)">Together</span></div>
+      <div class="pill-btn" onclick="closeDetail()">Back</div>
+    </div>
+  </div>
+</div>
+
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<script>
+  // ---------- Project data ----------
+  const projects = [
+    {name:"NIVEA", brand:"NIVEA", logo:"images/logo-nivea.svg", category:"live", year:"2026", software:"—", desc:"Live streaming campaign untuk NIVEA dengan interaksi real-time yang engaging.", image:"images/NIVEA.jpg"},
+    {name:"OLAY", brand:"OLAY", logo:"images/logo-olay.svg", category:"live", year:"2026", software:"—", desc:"Sesi live streaming OLAY yang menghadirkan pengalaman beauty interaktif secara langsung.", image:"images/OLAY TIKTOK.jpg"},
+    {name:"OLAY", brand:"OLAY", logo:"images/logo-olay.svg", category:"live", year:"2026", software:"—", desc:"Kampanye live OLAY di platform digital dengan konten kreatif dan audiens yang terlibat.", image:"images/OLAY TIKTOK 2.jpg"},
+    {name:"P&G", brand:"P&G", logo:"images/logo-pg.svg", category:"live", year:"2026", software:"—", desc:"Live shopping P&G yang memadukan brand story dengan pengalaman belanja langsung.", image:"images/P&G SHOPEE.jpg"},
+    {name:"SENKA", brand:"SENKA", logo:null, category:"live", year:"2026", software:"—", desc:"Live streaming SENKA dengan fokus pada skincare routine dan interaksi audiens.", image:"images/SENKA.jpg"},
+    {name:"SKIN1004", brand:"SKIN1004", logo:"images/logo-skin1004.png", category:"live", year:"2026", software:"—", desc:"Live brand activation SKIN1004 yang memperkenalkan produk ke pasar baru.", image:"images/SKIN1004.jpg"}
+  ];
+
+  const stage = document.getElementById('stage');
+  const N = projects.length;
+
+  // ---------- Continuous carousel state ----------
+  let scrollOffset = 0;
+  let velocity = 0;
+  let isDragging = false;
+  let isAnimating = false;
+  let animToken = 0;
+
+  // ---------- Custom cursor state ----------
+  const cRing = document.getElementById('cursorRing');
+  const cDot = document.getElementById('cursorDot');
+  let mx = 0, my = 0;
+  let rx = 0, ry = 0;
+  let dx = 0, dy = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    if (rx === 0 && ry === 0) { rx = mx; ry = my; dx = mx; dy = my; }
+  });
+  let shouldSnap = false;
+
+  // ---------- Tweakable constants ----------
+  const RADIUS = 480;
+  const ANGLE_PER_CARD = 22;  // degrees — higher = deeper concave effect
+  const FRICTION = 0.9;
+  const MIN_VELOCITY = 0.003;
+  const WHEEL_SENS = 0.0025;
+  const MAX_VELOCITY = 0.4;
+  const TOUCH_SENS = 0.003;
+  const MOMENTUM_FACTOR = 0.004;
+  const HIDE_THETA = 1.4;     // ~80°
+
+  // ---------- Card creation ----------
+  projects.forEach((p,i)=>{
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.index = i;
+    card.innerHTML = `<img class="card-img" src="${p.image}" alt="${p.name}" loading="lazy"><span class="tag">${p.name}</span>`;
+    card.addEventListener('click', ()=>{
+      const idx = parseInt(card.dataset.index);
+      const dist = Math.abs(getWrappedOffset(idx, scrollOffset));
+      if (dist < 0.4) { openDetail(idx); }
+      else { animateTo(idx); }
+    });
+    stage.appendChild(card);
+  });
+
+  // ---------- Helpers ----------
+  function mod(a, n){ return ((a % n) + n) % n; }
+
+  function getWrappedOffset(i, scroll){
+    let diff = i - scroll;
+    diff = mod(diff + N/2, N) - N/2;
+    return diff;
+  }
+
+  function getClosestIndex(){
+    return mod(Math.round(scrollOffset), N);
+  }
+
+  // ---------- Live project summary ----------
+  let lastSummaryIdx = -1;
+
+  function updateSummary(){
+    const idx = getClosestIndex();
+    if (idx === lastSummaryIdx) return;
+    lastSummaryIdx = idx;
+    const p = projects[idx];
+    const brandEl = document.getElementById('summaryBrand');
+    if (p.logo) {
+      brandEl.innerHTML = `<img class="summary-logo" src="${p.logo}" alt="${p.brand}">`;
+    } else {
+      brandEl.textContent = p.brand;
+    }
+    document.getElementById('summaryDesc').textContent = p.desc.split('.')[0] + '.';
+  }
+
+  // ---------- Render every card from current scrollOffset ----------
+  function render(){
+    const cards = stage.querySelectorAll('.card');
+    const closest = getClosestIndex();
+    cards.forEach(card => {
+      const i = parseInt(card.dataset.index);
+      const offset = getWrappedOffset(i, scrollOffset);
+      const theta = offset * ANGLE_PER_CARD * Math.PI / 180;
+      const absTheta = Math.abs(theta);
+
+      card.classList.toggle('center', i === closest);
+
+      if (absTheta > HIDE_THETA) {
+        card.style.opacity = '0';
+        card.style.pointerEvents = 'none';
+        return;
+      }
+      card.style.opacity = '1';
+      card.style.pointerEvents = 'all';
+
+      // Concave cylinder transform
+      const tx = Math.sin(theta) * RADIUS;
+      const tz = (Math.cos(theta) - 1) * RADIUS;
+      const ry = -theta * 180 / Math.PI;
+
+      // Smooth inward fisheye: cosine curve for scale + brightness
+      const cosT = Math.cos(theta);
+      const s = 0.7 + 0.3 * cosT;
+      const b = 0.35 + 0.65 * cosT;
+
+      card.style.transform = `translate3d(${tx}px,0,${tz}px) rotateY(${ry}deg) scale(${s})`;
+      card.style.zIndex = Math.round(100 - absTheta * 60);
+      card.style.filter = `brightness(${b})`;
+    });
+    updateSummary();
+  }
+
+  // ---------- RAF loop: physics + continuous render ----------
+  function tick(){
+    if (!isDragging && !isAnimating) {
+      if (Math.abs(velocity) > MIN_VELOCITY) {
+        scrollOffset += velocity;
+        velocity *= FRICTION;
+        shouldSnap = true;
+      } else if (shouldSnap) {
+        shouldSnap = false;
+        snapToCenter();
+      }
+    }
+    render();
+
+    // Custom cursor lerp
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    dx += (rx - dx) * 0.10;
+    dy += (ry - dy) * 0.10;
+    cRing.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+    cDot.style.transform = `translate(${dx}px, ${dy}px) translate(-50%, -50%)`;
+
+    requestAnimationFrame(tick);
+  }
+
+  // ---------- Gentle snap to nearest card when scroll stops ----------
+  function snapToCenter(){
+    const nearest = Math.round(scrollOffset);
+    const diff = nearest - scrollOffset;
+    if (Math.abs(diff) < 0.001) return;
+    isAnimating = true;
+    const start = scrollOffset;
+    const target = scrollOffset + diff;
+    const duration = 350;
+    const t0 = performance.now();
+    const myToken = ++animToken;
+
+    function step(now){
+      if (myToken !== animToken) { isAnimating = false; return; }
+      const t = Math.min((now - t0) / duration, 1);
+      const e = 1 - Math.pow(1 - t, 3);
+      scrollOffset = start + (target - start) * e;
+      render();
+      if (t < 1) requestAnimationFrame(step);
+      else isAnimating = false;
+    }
+    requestAnimationFrame(step);
+  }
+
+  // ---------- Animate to a target card index smoothly ----------
+  function animateTo(targetIndex){
+    isAnimating = true;
+    velocity = 0;
+    const diff = getWrappedOffset(targetIndex, scrollOffset);
+    const target = scrollOffset + diff;
+    const start = scrollOffset;
+    const duration = 500 + Math.abs(diff) * 100;
+    const t0 = performance.now();
+    const myToken = ++animToken;
+
+    function step(now){
+      if (myToken !== animToken) { isAnimating = false; return; }
+      const t = Math.min((now - t0) / duration, 1);
+      const e = t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+      scrollOffset = start + (target - start) * e;
+      render();
+      if (t < 1) requestAnimationFrame(step);
+      else isAnimating = false;
+    }
+    requestAnimationFrame(step);
+  }
+
+  render();
+  tick();
+
+  document.getElementById('detailsBtn').addEventListener('click', ()=> openDetail(getClosestIndex()));
+
+  function openDetail(i){
+    const p = projects[i];
+    document.getElementById('ovBrand').textContent = p.brand;
+    document.getElementById('ovYear').textContent = p.year;
+    document.getElementById('ovSoftware').textContent = p.software;
+    document.getElementById('ovDesc').textContent = p.desc;
+    document.getElementById('ovImage').innerHTML = `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:contain;border-radius:10px;">`;
+    document.getElementById('overlay').classList.add('open');
+  }
+  function closeDetail(){ document.getElementById('overlay').classList.remove('open'); }
+
+  // ---------- Contact form: WhatsApp + Email + toast ----------
+  document.getElementById('submitBtn').addEventListener('click', ()=>{
+    const name = document.getElementById('formName').value.trim();
+    const email = document.getElementById('formEmail').value.trim();
+    const msg = document.getElementById('formMsg').value.trim();
+    if (!name || !msg) return;
+
+    const body = `Hi, I'm ${name}${email ? ' ('+email+')' : ''}\n\n${msg}`;
+    const subject = `Portfolio Contact from ${name}`;
+
+    window.open(`https://wa.me/6281649166545?text=${encodeURIComponent(body)}`, '_blank');
+    window.location.href = `mailto:ranggaraar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    document.getElementById('formName').value = '';
+    document.getElementById('formEmail').value = '';
+    document.getElementById('formMsg').value = '';
+
+    showToast('Pesan berhasil dikirim ✓');
+  });
+
+  function showToast(text){
+    let el = document.getElementById('toast');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'toast'; el.className = 'toast';
+      document.body.appendChild(el);
+    }
+    el.textContent = text;
+    el.classList.add('show');
+    clearTimeout(el._timer);
+    el._timer = setTimeout(() => el.classList.remove('show'), 3500);
+  }
+
+  // ---------- Marquee testimonials ----------
+  const testiData = [
+    {text:"Detail visualnya luar biasa rapi, dan komunikasinya sangat lancar dari awal sampai akhir proyek.", name:"Alya Ramadhani", role:"Product Lead, Northlight Studio"},
+    {text:"Hasil akhirnya jauh melebihi ekspektasi — modern, elegan, dan tetap mudah digunakan.", name:"Dimas Prasetyo", role:"Founder, Arka Collective"},
+    {text:"Sangat teliti terhadap detail kecil, dan selalu punya solusi kreatif untuk setiap kendala.", name:"Sarah Kim", role:"Creative Director, Loop&Line"}
+  ];
+
+  function buildMarquee(trackId){
+    const track = document.getElementById(trackId);
+    for(let i=0; i<4; i++){
+      testiData.forEach(t => {
+        const card = document.createElement('div');
+        card.className = 'testi-card';
+        card.innerHTML = `<div class="testi-quote">"</div><p class="testi-text">${t.text}</p><div class="testi-name">${t.name}</div><div class="testi-role">${t.role}</div>`;
+        track.appendChild(card);
+      });
+    }
+  }
+  buildMarquee('track1');
+  buildMarquee('track2');
+
+  // ---------- Wheel (continuous momentum, handles X/Y axis) ----------
+  document.querySelector('.carousel-wrap').addEventListener('wheel', (e)=>{
+    e.preventDefault();
+    isAnimating = false;
+    animToken++;
+    const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    velocity += delta * WHEEL_SENS;
+    if (Math.abs(velocity) > MAX_VELOCITY) velocity = Math.sign(velocity) * MAX_VELOCITY;
+  }, {passive:false});
+
+  // ---------- Touch drag with momentum ----------
+  let touchStartX = 0;
+  let lastPtX = 0;
+  const wrap = document.querySelector('.carousel-wrap');
+  wrap.addEventListener('touchstart', e=>{
+    touchStartX = e.touches[0].clientX;
+    lastPtX = touchStartX;
+    isDragging = true;
+    isAnimating = false;
+    animToken++;
+    velocity = 0;
+  }, {passive:true});
+  wrap.addEventListener('touchmove', e=>{
+    const dx = e.touches[0].clientX - lastPtX;
+    lastPtX = e.touches[0].clientX;
+    scrollOffset -= dx * TOUCH_SENS;
+    render();
+  }, {passive:true});
+  wrap.addEventListener('touchend', e=>{
+    const totalDx = e.changedTouches[0].clientX - touchStartX;
+    velocity = -totalDx * MOMENTUM_FACTOR;
+    if (Math.abs(velocity) > MAX_VELOCITY) velocity = Math.sign(velocity) * MAX_VELOCITY;
+    isDragging = false;
+  }, {passive:true});
+  wrap.addEventListener('touchcancel', ()=>{ isDragging = false; });
+
+  // ---------- Mouse drag (grab & drag) ----------
+  let mouseStartX = 0;
+  let isMouseDown = false;
+  wrap.addEventListener('mousedown', e=>{
+    isMouseDown = true;
+    mouseStartX = e.clientX;
+    lastPtX = e.clientX;
+    isAnimating = false;
+    animToken++;
+    velocity = 0;
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', e=>{
+    if (!isMouseDown) return;
+    const dx = e.clientX - lastPtX;
+    lastPtX = e.clientX;
+    scrollOffset -= dx * TOUCH_SENS;
+    render();
+  });
+  window.addEventListener('mouseup', e=>{
+    if (!isMouseDown) return;
+    isMouseDown = false;
+    const totalDx = e.clientX - mouseStartX;
+    velocity = -totalDx * MOMENTUM_FACTOR;
+    if (Math.abs(velocity) > MAX_VELOCITY) velocity = Math.sign(velocity) * MAX_VELOCITY;
+  });
+
+  // ---------- Liquid glass nav indicator ----------
+  const navPill = document.getElementById('navPill');
+  const navIndicator = document.getElementById('navIndicator');
+  const navGlare = document.getElementById('navGlare');
+
+  function updateIndicator(smooth){
+    const active = document.querySelector('.nav-pill a.active');
+    if (!active || !navIndicator) return;
+    navIndicator.style.transition = smooth
+      ? 'transform .5s cubic-bezier(.34,1.2,.64,1), width .5s cubic-bezier(.34,1.2,.64,1)'
+      : 'none';
+    navIndicator.style.width = active.offsetWidth + 'px';
+    navIndicator.style.transform = `translateX(${active.offsetLeft}px)`;
+  }
+
+  requestAnimationFrame(() => updateIndicator(false));
+
+  window.addEventListener('resize', () => updateIndicator(false));
+
+  navPill.addEventListener('mousemove', e => {
+    const rect = navPill.getBoundingClientRect();
+    navGlare.style.setProperty('--x', (e.clientX - rect.left) + 'px');
+    navGlare.style.setProperty('--y', (e.clientY - rect.top) + 'px');
+  });
+
+  // ---------- Project category nav indicator ----------
+  const catPill = document.getElementById('catPill');
+  const catIndicator = document.getElementById('catIndicator');
+  const catGlare = document.getElementById('catGlare');
+
+  function updateCatIndicator(smooth){
+    const active = document.querySelector('.cat-pill a.active');
+    if (!active || !catIndicator) return;
+    catIndicator.style.transition = smooth
+      ? 'transform .5s cubic-bezier(.34,1.2,.64,1), width .5s cubic-bezier(.34,1.2,.64,1)'
+      : 'none';
+    catIndicator.style.width = active.offsetWidth + 'px';
+    catIndicator.style.transform = `translateX(${active.offsetLeft}px)`;
+  }
+
+  requestAnimationFrame(() => updateCatIndicator(false));
+
+  window.addEventListener('resize', () => updateCatIndicator(false));
+
+  catPill.addEventListener('mousemove', e => {
+    const rect = catPill.getBoundingClientRect();
+    catGlare.style.setProperty('--cx', (e.clientX - rect.left) + 'px');
+    catGlare.style.setProperty('--cy', (e.clientY - rect.top) + 'px');
+  });
+
+  document.querySelectorAll('.cat-pill a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelectorAll('.cat-pill a').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      updateCatIndicator(true);
+    });
+  });
+
+  // ---------- Scroll spy: nav + timeline ----------
+  const sections = ['home','projects','skills','testimonials','contact'];
+  const navLinks = document.querySelectorAll('.nav-pill a');
+  const tItems = document.querySelectorAll('.t-item');
+
+  function setActive(id){
+    navLinks.forEach(a=> a.classList.toggle('active', a.dataset.sec===id));
+    tItems.forEach(t=> t.classList.toggle('active', t.dataset.sec===id));
+    updateIndicator(true);
+  }
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting && entry.intersectionRatio > 0.4){
+        setActive(entry.target.id);
+      }
+    });
+  }, {threshold:[0.4,0.6]});
+  sections.forEach(id=> observer.observe(document.getElementById(id)));
+
+  tItems.forEach(t=> t.addEventListener('click', ()=>{
+    document.getElementById(t.dataset.sec).scrollIntoView({behavior:'smooth'});
+  }));
+</script>
+
+</body>
+</html>
