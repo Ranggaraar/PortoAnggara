@@ -381,52 +381,9 @@
   }
 
   @media (max-width:640px){
-    .topnav{ top:12px; }
-    .nav-pill{ gap:2px; padding:4px; }
-    .nav-pill a{ padding:8px 12px; font-size:12px; }
+    .topnav{ top:16px; }
+    .nav-pill a{ padding:10px 16px; font-size:13px; }
     .nav-cta{ display:none; }
-
-    .cat-pill{ gap:2px; padding:4px; }
-    .cat-pill a{ padding:6px 10px; font-size:11px; }
-
-    #home{ padding:100px 16px 40px; }
-    .hero-sub{ font-size:14px; margin:20px auto 30px; }
-    .scroll-pill{ padding:12px 24px; font-size:13px; }
-
-    .sec-head{ padding-top:80px; }
-    .sec-title{ font-size:clamp(26px,7vw,34px); }
-
-    .project-summary{ margin:20px auto 0; padding:0 16px; }
-    .summary-desc{ font-size:14px; }
-    .summary-logo{ max-height:40px; }
-
     .card{ width:150px; height:340px; margin:-170px 0 0 -75px; }
-    .carousel-wrap{ height:380px; }
-
-    .details-btn{ margin-top:24px; padding:12px 24px; font-size:13px; }
-
-    .detail-overlay{ padding:16px; }
-    .detail-info{ padding:24px; }
-    .detail-info .v{ font-size:18px; }
-    .detail-bottom .q{ width:100%; margin-bottom:8px; }
-
-    #skills{ padding-bottom:60px; }
-    .skills-grid{ padding:0 16px; gap:10px; }
-    .skill-card{ padding:10px 18px; font-size:13px; }
-
-    #testimonials{ padding-bottom:60px; }
-    .testi-card{ width:260px; padding:24px; }
-    .testi-text{ font-size:13.5px; }
-    .marquee-track{ gap:14px; }
-
-    #contact{ padding-bottom:80px; }
-    .contact-card{ padding:24px; margin:30px 16px 0; }
-    .field label{ font-size:12px; }
-    .field input, .field textarea{ padding:12px 14px; font-size:13px; }
-
-    #projects{ padding-bottom:60px; }
-
-    footer{ font-size:11px; padding-bottom:24px; }
-
-    .toast{ padding:10px 22px; font-size:13px; bottom:20px; white-space:normal; }
+    .carousel-wrap{ height:400px; }
   }
