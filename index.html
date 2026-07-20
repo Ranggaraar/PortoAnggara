@@ -189,6 +189,7 @@
   function setVH(){ document.documentElement.style.setProperty('--vh', `${window.innerHeight*0.01}px`); }
   setVH();
   window.addEventListener('resize', setVH);
+  if (window.visualViewport) window.visualViewport.addEventListener('resize', setVH);
 
   // ---------- Tweakable constants ----------
   let RADIUS = 480;
