@@ -461,7 +461,8 @@
   wrap.addEventListener('touchmove', e=>{
     const dx = e.touches[0].clientX - lastPtX;
     lastPtX = e.touches[0].clientX;
-    scrollOffset -= dx * TOUCH_SENS;
+    const pxPerOffset = ANGLE_PER_CARD * Math.PI / 180 * RADIUS;
+    scrollOffset -= dx / pxPerOffset;
     render();
   }, {passive:true});
   wrap.addEventListener('touchend', e=>{
