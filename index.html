@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;1,400;1,500&family=Beau+Rivage&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
 
@@ -51,12 +52,12 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="sec-head">
+  <div class="sec-head" data-animate="fadeInUp">
     <div class="sec-eyebrow">Selected Work</div>
     <h2 class="sec-title"><span class="grad">My</span> Projects</h2>
   </div>
 
-  <nav class="cat-pill" id="catPill">
+  <nav class="cat-pill" id="catPill" data-animate="fadeInDown">
     <div class="cat-indicator" id="catIndicator"></div>
     <div class="cat-glare" id="catGlare"></div>
     <a href="#" data-cat="live" class="active">Live Streaming</a>
@@ -65,11 +66,11 @@
     <a href="#" data-cat="other">Other Works</a>
   </nav>
 
-  <div class="carousel-wrap">
+  <div class="carousel-wrap" data-animate="fadeIn">
     <div class="carousel-stage" id="stage"></div>
   </div>
 
-  <div class="project-summary">
+  <div class="project-summary" data-animate="fadeInUp">
     <div class="summary-brand" id="summaryBrand">AURORA</div>
     <p class="summary-desc" id="summaryDesc">Redesain lengkap aplikasi keuangan pribadi dengan fokus pada kejelasan data dan interaksi yang menenangkan.</p>
   </div>
@@ -79,11 +80,11 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="sec-head">
+  <div class="sec-head" data-animate="fadeInUp">
     <div class="sec-eyebrow">Capabilities</div>
     <h2 class="sec-title"><span class="grad">My</span> Skills</h2>
   </div>
-  <div class="skills-grid">
+  <div class="skills-grid" data-animate="fadeInUp">
     <div class="skill-card">Simple Motion</div>
     <div class="skill-card">After Effect</div>
     <div class="skill-card">Photoshop</div>
@@ -97,11 +98,11 @@
 
 <!-- TESTIMONIALS -->
 <section id="testimonials">
-  <div class="sec-head">
+  <div class="sec-head" data-animate="fadeInUp">
     <div class="sec-eyebrow">Kind Words</div>
     <h2 class="sec-title">What They <span class="grad">Say</span></h2>
   </div>
-  <div class="marquee-wrap">
+  <div class="marquee-wrap" data-animate="fadeIn">
     <div class="marquee marquee--rtl">
       <div class="marquee-track" id="track1"></div>
     </div>
@@ -113,11 +114,11 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="sec-head">
+  <div class="sec-head" data-animate="fadeInUp">
     <div class="sec-eyebrow">Get In Touch</div>
     <h2 class="sec-title"><span class="grad">Let's Work</span> Together</h2>
   </div>
-  <div class="contact-card">
+  <div class="contact-card" data-animate="fadeInUp">
     <div class="field"><label>Nama</label><input type="text" id="formName" placeholder="Nama lengkap kamu"></div>
     <div class="field"><label>Email</label><input type="email" id="formEmail" placeholder="nama@email.com"></div>
     <div class="field"><label>Pesan</label><textarea id="formMsg" rows="4" placeholder="Ceritakan sedikit tentang proyekmu..."></textarea></div>
@@ -581,6 +582,18 @@
   tItems.forEach(t=> t.addEventListener('click', ()=>{
     document.getElementById(t.dataset.sec).scrollIntoView({behavior:'smooth'});
   }));
+
+  // ---------- Scroll-triggered Animate.css ----------
+  const animEls = document.querySelectorAll('[data-animate]');
+  const animObs = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      el.classList.add('animate__animated', `animate__${el.dataset.animate}`);
+      animObs.unobserve(el);
+    });
+  }, {threshold:0.25});
+  animEls.forEach(el => animObs.observe(el));
 </script>
 
 </body>
