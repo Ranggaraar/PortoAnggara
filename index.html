@@ -325,7 +325,7 @@
     isAnimating = true;
     const start = scrollOffset;
     const target = scrollOffset + diff;
-    const duration = 350;
+    const duration = 480;
     const t0 = performance.now();
     const myToken = ++animToken;
 
@@ -434,18 +434,20 @@
   buildMarquee('track1');
   buildMarquee('track2');
 
-  // ---------- Wheel (continuous momentum, handles X/Y axis) ----------
+  // ---------- Wheel (direct offset + debounce snap) ----------
+  let wheelSnapTimer = 0;
   document.querySelector('.carousel-wrap').addEventListener('wheel', (e)=>{
     e.preventDefault();
-    isAnimating = false;
+    if (isAnimating) return;
     animToken++;
     const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-    velocity += delta * WHEEL_SENS;
-    if (Math.abs(velocity) > MAX_VELOCITY) velocity = Math.sign(velocity) * MAX_VELOCITY;
+    scrollOffset += delta * WHEEL_SENS;
+    render();
+    clearTimeout(wheelSnapTimer);
+    wheelSnapTimer = setTimeout(() => snapToCenter(), 120);
   }, {passive:false});
 
-  // ---------- Touch drag with momentum ----------
-  let touchStartX = 0;
+  // ---------- Touch drag with snap ----------
   let lastPtX = 0;
   const wrap = document.querySelector('.carousel-wrap');
   wrap.addEventListener('touchstart', e=>{
@@ -463,15 +465,12 @@
     render();
   }, {passive:true});
   wrap.addEventListener('touchend', e=>{
-    const totalDx = e.changedTouches[0].clientX - touchStartX;
-    velocity = -totalDx * MOMENTUM_FACTOR;
-    if (Math.abs(velocity) > MAX_VELOCITY) velocity = Math.sign(velocity) * MAX_VELOCITY;
     isDragging = false;
+    snapToCenter();
   }, {passive:true});
   wrap.addEventListener('touchcancel', ()=>{ isDragging = false; });
 
-  // ---------- Mouse drag (grab & drag) ----------
-  let mouseStartX = 0;
+  // ---------- Mouse drag (grab & drag, snap on release) ----------
   let isMouseDown = false;
   wrap.addEventListener('mousedown', e=>{
     isMouseDown = true;
@@ -492,9 +491,7 @@
   window.addEventListener('mouseup', e=>{
     if (!isMouseDown) return;
     isMouseDown = false;
-    const totalDx = e.clientX - mouseStartX;
-    velocity = -totalDx * MOMENTUM_FACTOR;
-    if (Math.abs(velocity) > MAX_VELOCITY) velocity = Math.sign(velocity) * MAX_VELOCITY;
+    snapToCenter();
   });
 
   // ---------- Liquid glass nav indicator ----------
