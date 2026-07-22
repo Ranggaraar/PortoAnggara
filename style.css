@@ -445,6 +445,29 @@
     .toast{ padding:8px 18px; font-size:12px; bottom:14px; white-space:normal; max-width:90vw; }
   }
 
+/* ---------- Beta button ---------- */
+#beta-btn{
+  position:fixed; top:20px; right:20px;
+  z-index:9999;
+  padding:6px 16px;
+  font-family:inherit;
+  font-size:13px; font-weight:500;
+  color:rgba(255,255,255,0.55);
+  background:transparent;
+  border:1.5px dashed rgba(255,255,255,0.25);
+  border-radius:20px;
+  text-decoration:none;
+  letter-spacing:.6px;
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  transition:color .3s,border-color .3s,background .3s;
+}
+#beta-btn:hover{
+  color:aqua;
+  border-color:aqua;
+  background:rgba(0,255,255,0.08);
+}
+
   @media (max-width:480px){
     .hero-title{ font-size:clamp(32px,9vw,48px); }
     .hero-script{ font-size:clamp(52px,14vw,70px); -webkit-text-stroke:1px rgba(255,255,255,0.85); }

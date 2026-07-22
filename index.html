@@ -435,67 +435,6 @@
   buildMarquee('track1');
   buildMarquee('track2');
 
-  // ---------- Wheel (direct offset + debounce snap) ----------
-  let wheelSnapTimer = 0;
-  document.querySelector('.carousel-wrap').addEventListener('wheel', (e)=>{
-    e.preventDefault();
-    if (isAnimating) return;
-    animToken++;
-    const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-    scrollOffset += delta * WHEEL_SENS;
-    render();
-    clearTimeout(wheelSnapTimer);
-    wheelSnapTimer = setTimeout(() => snapToCenter(), 120);
-  }, {passive:false});
-
-  // ---------- Touch drag with snap ----------
-  let lastPtX = 0;
-  const wrap = document.querySelector('.carousel-wrap');
-  wrap.addEventListener('touchstart', e=>{
-    touchStartX = e.touches[0].clientX;
-    lastPtX = touchStartX;
-    isDragging = true;
-    isAnimating = false;
-    animToken++;
-    velocity = 0;
-  }, {passive:true});
-  wrap.addEventListener('touchmove', e=>{
-    const dx = e.touches[0].clientX - lastPtX;
-    lastPtX = e.touches[0].clientX;
-    const pxPerOffset = ANGLE_PER_CARD * Math.PI / 180 * RADIUS;
-    scrollOffset -= dx / pxPerOffset;
-    render();
-  }, {passive:true});
-  wrap.addEventListener('touchend', e=>{
-    isDragging = false;
-    snapToCenter();
-  }, {passive:true});
-  wrap.addEventListener('touchcancel', ()=>{ isDragging = false; });
-
-  // ---------- Mouse drag (grab & drag, snap on release) ----------
-  let isMouseDown = false;
-  wrap.addEventListener('mousedown', e=>{
-    isMouseDown = true;
-    mouseStartX = e.clientX;
-    lastPtX = e.clientX;
-    isAnimating = false;
-    animToken++;
-    velocity = 0;
-    e.preventDefault();
-  });
-  window.addEventListener('mousemove', e=>{
-    if (!isMouseDown) return;
-    const dx = e.clientX - lastPtX;
-    lastPtX = e.clientX;
-    scrollOffset -= dx * TOUCH_SENS;
-    render();
-  });
-  window.addEventListener('mouseup', e=>{
-    if (!isMouseDown) return;
-    isMouseDown = false;
-    snapToCenter();
-  });
-
   // ---------- Liquid glass nav indicator ----------
   const navPill = document.getElementById('navPill');
   const navIndicator = document.getElementById('navIndicator');
@@ -594,7 +533,60 @@
     });
   }, {threshold:0.25});
   animEls.forEach(el => animObs.observe(el));
+
+  // ---------- Inertia scroll for project carousel ----------
+  function initInertiaScroll(container, track) {
+    let targetX = 0;
+    let currentX = 0;
+    let velocity = 0;
+    const ease = 0.08;
+    const maxScroll = () => track.scrollWidth - container.clientWidth;
+
+    function clamp(v) {
+      return Math.max(-maxScroll(), Math.min(0, v));
+    }
+
+    container.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const delta = (Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX);
+      targetX = clamp(targetX - delta);
+    }, { passive: false });
+
+    let isDown = false, startX = 0, startTarget = 0;
+    container.addEventListener('mousedown', (e) => {
+      isDown = true; startX = e.clientX; startTarget = targetX;
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      targetX = clamp(startTarget + (e.clientX - startX) * 1.5);
+    });
+    window.addEventListener('mouseup', () => isDown = false);
+
+    let touchX = 0, touchTarget = 0;
+    container.addEventListener('touchstart', (e) => {
+      touchX = e.touches[0].clientX; touchTarget = targetX;
+    });
+    container.addEventListener('touchmove', (e) => {
+      const dx = e.touches[0].clientX - touchX;
+      targetX = clamp(touchTarget + dx * 1.5);
+    });
+
+    function raf() {
+      currentX += (targetX - currentX) * ease;
+      velocity = targetX - currentX;
+      track.style.transform = `translate3d(${currentX}px, 0, 0)`;
+      requestAnimationFrame(raf);
+    }
+    raf();
+  }
+
+  initInertiaScroll(
+    document.querySelector('.carousel-wrap'),
+    document.querySelector('#stage')
+  );
 </script>
+
+<a id="beta-btn" href="beta.html">beta</a>
 
 </body>
 </html>
